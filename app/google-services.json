@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "106021514303",
+    "project_id": "mobile-fcm-51720",
+    "storage_bucket": "mobile-fcm-51720.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:106021514303:android:1bf4e34e3d7ae7f3825c8a",
+        "android_client_info": {
+          "package_name": "com.nhathm.jobhunt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "106021514303-3cu8krftfeneojihup17qsl2rplgj2jb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUvmhUHQpH4LPznKqk8IlsaflnkFQ5DZA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "106021514303-3cu8krftfeneojihup17qsl2rplgj2jb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

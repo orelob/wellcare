@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="circle">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="MyDenseOutlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="materialThemeOverlay">@style/MyThemeOverlayOutlinedDense</item>
+        <item name="boxStrokeColor">@color/secondary</item>
+        <item name="boxStrokeWidth">0dp</item>
+    </style>
+
+    <style name="MyThemeOverlayOutlinedDense">
+        <item name="editTextStyle">@style/MyTextInputEditText_outlinedBox_dense_h
+        </item>
+    </style>
+
+    <style name="MyTextInputEditText_outlinedBox_dense_h" parent="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense">
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:textColorSecondary">@color/ic_color</item>
+    </style>
+
+    <style name="Widge.MyApp.AutoCompleteText" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
+
+    </style>
+
+
+    <style name="BottomNavThem" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+    </style>
+
+
+    <style name="Widget.MyApp.TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxStrokeWidth">0dp</item>
+        <item name="boxStrokeWidthFocused">0dp</item>
+
+        <item name="boxBackgroundColor">@color/secondary</item>
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/card_corner_small</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_small</item>
+        <item name="cornerRadius">@dimen/card_corner_small</item>
+    </style>
+</resources>

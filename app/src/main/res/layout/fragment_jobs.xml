@@ -1,0 +1,476 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.jobs.JobsFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:fitsSystemWindows="true"
+        app:elevation="10dp">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/margin_16dp"
+                    android:paddingBottom="@dimen/margin_16dp">
+
+                    <EditText
+                        android:id="@+id/jobTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginHorizontal="@dimen/padding_parent"
+                        android:background="@drawable/bg_input"
+                        android:drawableEnd="@drawable/ic_baseline_search_24"
+                        android:drawablePadding="10dp"
+                        android:hint="Add a job title"
+                        android:importantForAutofill="no"
+                        android:inputType="textEmailAddress"
+                        android:paddingStart="12sp"
+                        android:paddingEnd="16sp"
+                        android:textColor="@color/text"
+                        android:textSize="16sp"
+                        android:textStyle="normal"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/filterButton"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+
+                    <ImageButton
+                        android:id="@+id/filterButton"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="@dimen/padding_parent"
+                        android:background="@drawable/bg_rounded"
+                        android:backgroundTint="@color/secondary"
+                        android:contentDescription="@string/app_name"
+                        android:padding="@dimen/padding_parent"
+                        android:src="@drawable/ic_baseline_filter_list_24"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.core.widget.NestedScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:id="@+id/expandableLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_parent"
+                            android:orientation="vertical"
+                            android:layout_marginRight="@dimen/padding_parent">
+
+                            <TextView
+                                android:id="@+id/salaryTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingVertical="@dimen/margin_4dp"
+                                android:text="Salary"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/text_normal"
+                                android:textStyle="bold" />
+
+                            <org.florescu.android.rangeseekbar.RangeSeekBar
+                                android:id="@+id/seekbar_placeholder"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:paddingVertical="@dimen/margin_4dp"
+                                app:alwaysActive="true"
+                                app:showLabels="false"
+                                app:textAboveThumbsColor="@color/text" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_parent"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginRight="@dimen/padding_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Location"
+                                android:textColor="@color/text"
+                                android:textSize="@dimen/text_normal"
+                                android:textStyle="bold" />
+
+                            <AutoCompleteTextView
+                                android:id="@+id/autoCompleteLocation"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/padding_parent"
+                                android:background="@drawable/bg_input_border"
+                                android:drawableEnd="@drawable/ic_down_16"
+                                android:importantForAutofill="no"
+                                android:inputType="textEmailAddress"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="5dp"
+                                android:hint="e.g. Hanoi, Vietnam"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/text_normal"
+                                android:textStyle="normal" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/padding_parent"
+                                android:layout_marginTop="@dimen/margin_8dp"
+                                android:layout_marginRight="@dimen/padding_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Company Details"
+                                    android:textColor="@color/text"
+                                    android:textSize="@dimen/text_normal"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_10dp"
+                                    android:orientation="vertical">
+
+                                    <CheckBox
+                                        android:id="@+id/checkbox1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="1-10 employees" />
+
+                                    <CheckBox
+                                        android:id="@+id/checkbox2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="11-50 employees" />
+
+                                    <CheckBox
+                                        android:id="@+id/checkbox3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="51-200 employees" />
+
+                                    <CheckBox
+                                        android:id="@+id/checkbox4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="201-500 employees" />
+
+                                    <CheckBox
+                                        android:id="@+id/checkbox5"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="501+ employees" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/padding_parent"
+                                android:layout_marginTop="@dimen/margin_8dp"
+                                android:layout_marginRight="@dimen/padding_parent"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Job Types"
+                                    android:textColor="@color/text"
+                                    android:textSize="@dimen/text_normal"
+                                    android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/margin_10dp"
+                                    android:orientation="vertical">
+
+                                    <CheckBox
+                                        android:id="@+id/check1"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="Fulltime" />
+
+                                    <CheckBox
+                                        android:id="@+id/check2"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="Contract" />
+
+                                    <CheckBox
+                                        android:id="@+id/check3"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="Internship" />
+
+                                    <CheckBox
+                                        android:id="@+id/check4"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="25dp"
+                                        android:buttonTint="@color/primary"
+                                        android:checked="true"
+                                        android:padding="0dp"
+                                        android:text="Cofounder" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_parent"
+                            android:layout_marginTop="@dimen/margin_8dp"
+                            android:layout_marginRight="@dimen/padding_parent"
+                            android:orientation="horizontal">
+
+
+                            <androidx.constraintlayout.widget.ConstraintLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/numberOfResult1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginEnd="8dp"
+                                    android:text=""
+                                    android:textColor="@color/primary"
+                                    android:textSize="@dimen/text_normal"
+                                    android:textStyle="normal"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/searchButton"
+                                    app:layout_constraintTop_toTopOf="parent"
+                                    app:layout_constraintVertical_bias="0.551" />
+<!--                                <Button-->
+<!--                                    android:visibility="gone"-->
+<!--                                    android:id="@+id/searchButton"-->
+<!--                                    android:layout_width="wrap_content"-->
+<!--                                    android:layout_height="40dp"-->
+<!--                                    android:backgroundTint="@color/black"-->
+<!--                                    android:text="View results"-->
+<!--                                    android:textAllCaps="false"-->
+<!--                                    android:textColor="@color/white"-->
+<!--                                    android:textSize="@dimen/text_normal"-->
+<!--                                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                    app:layout_constraintTop_toTopOf="parent" />-->
+                            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                        </LinearLayout>
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="wrap_content"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_marginStart="18dp"-->
+                        <!--                        android:layout_marginEnd="18dp"-->
+                        <!--                        android:text="Small plates, salad and sandwiches an intimate setting with 12 indoor seats plus patio seating."-->
+                        <!--                        android:textAppearance="@style/TextAppearance.AppCompat.Body1"-->
+                        <!--                        android:textColor="@color/text" />-->
+
+                        <!--                    <View-->
+                        <!--                        android:layout_width="match_parent"-->
+                        <!--                        android:layout_height="0.5dp"-->
+                        <!--                        android:layout_marginStart="18dp"-->
+                        <!--                        android:layout_marginTop="18dp"-->
+                        <!--                        android:layout_marginEnd="18dp"-->
+                        <!--                        android:background="#88888888" />-->
+
+                        <!--                    <TextView-->
+                        <!--                        android:layout_width="wrap_content"-->
+                        <!--                        android:layout_height="wrap_content"-->
+                        <!--                        android:layout_marginStart="18dp"-->
+                        <!--                        android:layout_marginTop="18dp"-->
+                        <!--                        android:layout_marginEnd="18dp"-->
+                        <!--                        android:text="Tonight's avaliability"-->
+                        <!--                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"-->
+                        <!--                        android:textColor="@color/text" />-->
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <!--                        <Button-->
+                            <!--                            android:layout_width="70dp"-->
+                            <!--                            android:layout_height="30dp"-->
+                            <!--                            android:layout_marginStart="12dp"-->
+                            <!--                            android:layout_marginTop="2dp"-->
+                            <!--                            android:layout_marginBottom="2dp"-->
+                            <!--                            android:elevation="0dp"-->
+                            <!--                            android:text="5:30PM"-->
+                            <!--                            android:textColor="@color/text" />-->
+
+                            <!--                        <Button-->
+                            <!--                            android:layout_width="70dp"-->
+                            <!--                            android:layout_height="30dp"-->
+                            <!--                            android:layout_marginStart="12dp"-->
+                            <!--                            android:layout_marginTop="2dp"-->
+                            <!--                            android:layout_marginBottom="2dp"-->
+                            <!--                            android:elevation="0dp"-->
+                            <!--                            android:text="7:30PM"-->
+                            <!--                            android:textColor="#6200EA" />-->
+
+                            <!--                        <Button-->
+                            <!--                            android:layout_width="70dp"-->
+                            <!--                            android:layout_height="30dp"-->
+                            <!--                            android:layout_marginStart="12dp"-->
+                            <!--                            android:layout_marginTop="2dp"-->
+                            <!--                            android:layout_marginBottom="2dp"-->
+                            <!--                            android:elevation="0dp"-->
+                            <!--                            android:text="5:30PM"-->
+                            <!--                            android:textColor="@color/text" />-->
+
+                            <!--                        <Button-->
+                            <!--                            android:layout_width="70dp"-->
+                            <!--                            android:layout_height="30dp"-->
+                            <!--                            android:layout_marginStart="12dp"-->
+                            <!--                            android:layout_marginTop="2dp"-->
+                            <!--                            android:layout_marginBottom="2dp"-->
+                            <!--                            android:elevation="0dp"-->
+                            <!--                            android:text="5:30PM"-->
+                            <!--                            android:textColor="@color/text" />-->
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </androidx.core.widget.NestedScrollView>
+
+                <!--                <View-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="0.5dp"-->
+                <!--                    android:layout_marginTop="18dp"-->
+                <!--                    android:background="#88888888" />-->
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_marginHorizontal="@dimen/padding_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+                <TextView
+                    android:id="@+id/numberOfResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/padding_parent"
+                    android:textSize="@dimen/text_normal"
+                    android:textColor="@color/primary"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/searchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@color/black"
+                    android:text="| Refresh |"
+                    android:textAllCaps="false"
+                    android:textColor="@color/primary"
+                    android:textSize="@dimen/text_extra_large"
+              />
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/padding_parent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/primary"
+                android:visibility="gone" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/saved_jobs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/numberOfResult" />
+
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Log In"
+        android:id="@+id/navigation_login"
+        android:icon="@drawable/ic_job_24"/>
+
+    <item android:title="Sign up"
+        android:id="@+id/navigation_signup"
+        android:icon="@drawable/ic_baseline_people_24"/>
+</menu>
