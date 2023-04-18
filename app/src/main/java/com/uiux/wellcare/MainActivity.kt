@@ -3,41 +3,40 @@ package com.uiux.wellcare
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.uiux.wellcare.ui.theme.WellcareTheme
+
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import com.uiux.wellcare.composables.onboarding.OnboardingScreen
+
+
+const val LOGIN_ROUTE = "/login"
+const val REGISTER_ROUTE = "/register"
+const val FORGOT_PASSWORD_ROUTE = "/forgot-password"
+const val RESET_PASSWORD_ROUTE = "/reset-password"
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContent {
+//            val navController = rememberNavController()
+//
+//            WellcareTheme {
+//                NavHost(navController = navController, startDestination = LOGIN_ROUTE) {
+//                    composable(LOGIN_ROUTE) { LoginScreen(navController) }
+//                    composable(REGISTER_ROUTE) { RegisterScreen(navController) }
+//                    composable(FORGOT_PASSWORD_ROUTE) { ForgotPasswordScreen(navController) }
+//                    composable(RESET_PASSWORD_ROUTE) { ResetPasswordScreen(navController) }
+//                }
+//            }
+//        }
+
         setContent {
             WellcareTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
+                OnboardingScreen()
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    WellcareTheme {
-        Greeting("Android")
-    }
-}
