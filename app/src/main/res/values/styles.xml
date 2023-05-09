@@ -20,18 +20,15 @@
         <item name="android:paddingBottom">8dp</item>
     </style>
 
-    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="android:textColorSecondary">@color/ic_color</item>
-    </style>
-
-    <style name="Widge.MyApp.AutoCompleteText" parent="Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu">
-
+    <style name="CustomTitleBarStyle" parent="TitleBarDefaultStyle">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+        <item name="fontFamily">@font/manrope_medium</item>
     </style>
 
 
     <style name="BottomNavThem" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
+        <item name="android:textColorSecondary">@color/yellow</item>
     </style>
 
 

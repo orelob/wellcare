@@ -14,5 +14,5 @@ dependencyResolutionManagement {
 
     }
 }
-rootProject.name = "job-hunt"
+rootProject.name = "wellcare"
 include ':app'

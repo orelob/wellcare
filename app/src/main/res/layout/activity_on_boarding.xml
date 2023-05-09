@@ -5,6 +5,16 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/margin_18dp"
+        android:src="@drawable/logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
@@ -14,8 +24,7 @@
         app:layout_constraintBottom_toTopOf="@+id/dots_indicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/logo" />
 
     <LinearLayout
             android:id="@+id/indicatorsContainer"
@@ -26,26 +35,12 @@
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@id/button_get_started" />
 
-
-<!--        <com.tbuonomo.viewpagerdotsindicator.DotsIndicator-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintBottom_toTopOf="@id/button_get_started"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            android:id="@+id/dots_indicator"-->
-<!--            app:dotsColor="@color/secondary"-->
-<!--            android:layout_margin="20dp"-->
-<!--            app:selectedDotColor="@color/black"-->
-<!--            app:dotsSpacing="5dp"-->
-<!--            app:dotsWidthFactor="1.5" />-->
-
         <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
             android:id="@+id/dots_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:dotsColor="@color/black"
-            app:dotsStrokeColor="@color/black"
+            app:dotsColor="@color/primary"
+            app:dotsStrokeColor="@color/secondary"
             app:layout_constraintBottom_toTopOf="@id/button_get_started"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,22 +51,21 @@
             app:dotsStrokeWidth="2dp"
             />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/button_get_started"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="30dp"
-            android:layout_marginBottom="8dp"
-            android:minWidth="110dp"
-            android:text="@string/get_started"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:backgroundTint="@color/black"
-            app:cornerRadius="5dp"
-            app:layout_constraintBottom_toTopOf="@id/text_skip_intro"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_get_started"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/primary"
+        android:layout_margin="16dp"
+        android:background="@drawable/ripple"
+        android:text="@string/get_started"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/text_skip_intro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/text_skip_intro"

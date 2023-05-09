@@ -6,21 +6,29 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
+    /////////
+
     <color name="black">#283030</color>
     <color name="white">#FFFFFFFF</color>
     <color name="background">#E5E5E5</color>
 
-    <color name="primary">#01A2D5</color>
-    <color name="primary_variant">#5BA7E2FF</color>
+    <color name="primary">#FF1A5BAA</color>
+    <color name="primary_variant">#FF45bee7</color>
+
+    <color name="yellow">#FFF9CA89</color>
+
     <color name="color_button">#DBE0E1</color>
     <color name="secondary">#E4E4E4</color>
-    <color name="ic_color">#525769</color>
+    <color name="ic_color">#8C8D8E</color>
+    <color name="bg">#51E3E3E3</color>
+    <color name="bg_primary">#1745BEE7</color>
+
     <color name="tag_background">#e0f9ea</color>
-<!--    <color name="text">#0e1111</color>-->
+    <!--    <color name="text">#0e1111</color>-->
     <color name="text">#525769</color>
-    <color name="text_secondary">#525769</color>
+    <color name="text_secondary">#AAAAAA</color>
     <color name="text_tag">#00431b</color>
     <color name="card_background">#9F6A6A</color>
 
-    <color name="input_bg">#EBEBEB</color>
+    <color name="input_bg">#F1F1F1</color>
 </resources>
