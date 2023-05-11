@@ -11,14 +11,20 @@ import androidx.fragment.app.viewModels
 import com.nhathm.wellcare.R as myR
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import com.nhathm.jobhunt.ui.jobs.TopDoctorAdapter
 import com.nhathm.jobhunt.ui.jobs.UpcomingAppointmentAdapter
+import com.nhathm.wellcare.adapter.PageAdapter
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.data.Appointment
 import com.nhathm.wellcare.data.Doctor
 import com.nhathm.wellcare.data.api.AppointmentApi
 import com.nhathm.wellcare.data.response.SignInResponse
+import com.nhathm.wellcare.databinding.FragmentPatientAppointmentBinding
 import com.nhathm.wellcare.databinding.FragmentPatientHomeBinding
+import com.nhathm.wellcare.ui.auth.OtpVerificationFragment
+import com.nhathm.wellcare.ui.doctor.DoctorDetailFragment
 import com.nhathm.wellcare.utils.castToList
 import com.nhathm.wellcare.utils.castToObject
 import com.nhathm.wellcare.utils.handleApiError
@@ -31,78 +37,44 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PatientAppointmentFragment : Fragment() {
 
-    private lateinit var binding: FragmentPatientHomeBinding
+    private lateinit var binding: FragmentPatientAppointmentBinding
     private val viewModel by viewModels<PatientViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentPatientHomeBinding.inflate(layoutInflater)
+        binding = FragmentPatientAppointmentBinding.inflate(layoutInflater)
 
-        requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.expandableLayout.visible(false)
+        val pageAdapter = PageAdapter(childFragmentManager)
 
-        binding.filterButton.setOnClickListener {
-            if (binding.expandableLayout.visibility == View.GONE) {
-                TransitionManager.beginDelayedTransition(binding.cardView, AutoTransition())
-                binding.expandableLayout.visible(true)
-                binding.filterButton.setImageResource(myR.drawable.ic_baseline_filter_list_active_24)
-            } else {
-                TransitionManager.beginDelayedTransition(binding.cardView, AutoTransition())
-                binding.expandableLayout.visible(false)
-                binding.filterButton.setImageResource(myR.drawable.ic_baseline_filter_list_24)
+        pageAdapter.addWithTitle(PatientBookAppointmentFragment(), "Upcoming")
+        pageAdapter.addWithTitle(PatientUpcomingAppointmentFragment(), "Completed")
+        pageAdapter.addWithTitle(PatientUpcomingAppointmentFragment(), "Canceled")
+
+        binding.viewPager.adapter = pageAdapter
+        binding.viewPager.currentItem = 0
+        binding.tabLayout.setupWithViewPager(binding.viewPager)
+
+        binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                tab?.let {
+                    binding.viewPager.currentItem = it.position
+                }
             }
-        }
+
+            override fun onTabUnselected(tab: TabLayout.Tab?) {
+                // No action needed
+            }
+
+            override fun onTabReselected(tab: TabLayout.Tab?) {
+                // No action needed
+            }
+        })
 
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        viewModel.upcomingAppointmentList.observe(viewLifecycleOwner, Observer { appointments ->
-            binding.progressbar.visible(appointments is Resource.Loading)
-            when (appointments) {
-                is Resource.Success -> {
-                    lifecycleScope.launch {
-                        val appointmentsResponse =
-                            castToList(appointments.value, Appointment::class.java);
-
-                        binding.upcomingAppointments.adapter(
-                            UpcomingAppointmentAdapter(appointmentsResponse as MutableList<Appointment>),
-                            1
-                        )
-                    }
-                }
-                is Resource.Failure -> {
-                    handleApiError(appointments)
-                }
-                else -> {}
-            }
-        })
-
-        viewModel.topDoctorList.observe(viewLifecycleOwner, Observer { doctors ->
-            binding.progressbar.visible(doctors is Resource.Loading)
-            when (doctors) {
-                is Resource.Success -> {
-                    lifecycleScope.launch {
-                        val doctorsResponse =
-                            castToList(doctors.value, Doctor::class.java);
-
-                        binding.topDoctors.adapter(
-                            TopDoctorAdapter(doctorsResponse as MutableList<Doctor>),
-                            false, false
-                        )
-                    }
-                }
-                is Resource.Failure -> {
-                    handleApiError(doctors)
-                }
-                else -> {}
-            }
-        })
-    }
 
 }

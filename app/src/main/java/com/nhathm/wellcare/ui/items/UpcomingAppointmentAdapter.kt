@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.util.Log
 import com.google.gson.Gson
+import com.nhathm.wellcare.activity.DoctorDetailActivity
 import com.nhathm.wellcare.adapter.BaseAdapter
 import com.nhathm.wellcare.data.Appointment
 import com.nhathm.wellcare.databinding.ItemUpcomingAppointmentBinding
@@ -12,8 +13,22 @@ import com.nhathm.wellcare.databinding.ItemUpcomingAppointmentBinding
 class UpcomingAppointmentAdapter(private val jobList: MutableList<Appointment>) :
     BaseAdapter<ItemUpcomingAppointmentBinding>(ItemUpcomingAppointmentBinding::inflate, jobList) {
 
-    override fun onBindViewHolder(holder: ViewHolder<ItemUpcomingAppointmentBinding>, position: Int) {
+    override fun onBindViewHolder(
+        holder: ViewHolder<ItemUpcomingAppointmentBinding>,
+        position: Int
+    ) {
         val job = jobList[position]
+
+        holder.itemView
+            .setOnClickListener {
+                context.startActivity(
+                    Intent(
+                        context,
+                        DoctorDetailActivity::class.java
+                    )
+                )
+            }
+
 //
 //        if (job.applied) {
 //            holder.binding.applyButton.text = "Applied"

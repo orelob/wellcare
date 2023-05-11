@@ -4,15 +4,15 @@
         android:id="@+id/navigation_patient_home"
         android:icon="@drawable/ic_home"/>
 
-<!--    <item android:title="Appointment"-->
-<!--        android:id="@+id/navigation_patient_appointment"-->
-<!--        android:icon="@drawable/ic_appointment"/>-->
+    <item android:title="Appointment"
+        android:id="@+id/navigation_patient_appointment"
+        android:icon="@drawable/ic_appointment"/>
 
 <!--    <item android:title="Profile"-->
 <!--        android:id="@+id/navigation_profile"-->
 <!--        android:icon="@drawable/ic_baseline_face_24"/>-->
 
     <item android:title="Setting"
-        android:id="@+id/navigation_patient_setting"
+        android:id="@+id/navigation_patient_settings"
         android:icon="@drawable/ic_baseline_settings_24"/>
 </menu>

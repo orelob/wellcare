@@ -30,7 +30,9 @@
         <activity
             android:name=".activity.AuthActivity"
             android:exported="false"
-            android:windowSoftInputMode="stateAlwaysVisible">
+            android:windowSoftInputMode="stateAlwaysVisible|adjustResize"
+
+            >
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -38,7 +40,10 @@
         <activity android:name=".activity.OnBoardingActivity" />
 
         <activity android:name=".activity.DoctorActivity" />
+        <activity android:name=".activity.DoctorDetailActivity" />
+
         <activity android:name=".activity.PatientActivity" />
+        <activity android:name=".activity.BookAppointmentActivity" android:windowSoftInputMode="adjustResize"/>
 
         <activity
             android:name=".activity.SplashActivity"

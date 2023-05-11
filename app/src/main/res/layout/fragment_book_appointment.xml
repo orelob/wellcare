@@ -1,0 +1,289 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:fitsSystemWindows="true"
+        android:stateListAnimator="@animator/show_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/padding_parent"
+                android:backgroundTint="@color/white"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_arrow_back_24" />
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/margin_10dp"
+                android:text="Book Appointment"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView2"
+        app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="58dp"
+        android:layout_marginBottom="100dp"
+        android:fillViewport="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="@dimen/margin_20dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="Select Date"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/companyLogo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="20dp">
+
+                    <CalendarView
+                        android:id="@+id/calendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/bg" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="Select Hour"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/hourPicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="@dimen/padding_parent"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="mm/dd/yyyy"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="Full Name"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/fullName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="@dimen/padding_parent"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Enter patient name"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="Age"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/age"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginHorizontal="@dimen/padding_parent"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Enter patient name"
+                    android:importantForAutofill="no"
+                    android:inputType="none"
+                    android:paddingStart="16sp"
+                    android:paddingEnd="16sp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:maxLines="1"
+                    android:text="Write Your Problem"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/problem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/padding_parent"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:clickable="true"
+                    android:gravity="top|start"
+                    android:hint="Enter patient name"
+                    android:lines="5"
+                    android:maxLines="20"
+                    android:importantForAutofill="no"
+                    android:inputType="textMultiLine"
+                    android:padding="16sp"
+                    android:textColor="@color/black"
+                    android:textCursorDrawable="@drawable/cursor"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bookAppointmentButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end|center"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="30dp"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/ripple"
+        android:backgroundTint="@color/primary"
+        android:text="Next"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

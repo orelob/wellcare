@@ -9,6 +9,7 @@ import com.nhathm.wellcare.R
 import com.nhathm.wellcare.adapter.PageAdapter
 import com.nhathm.wellcare.databinding.ActivityPatientBinding
 import com.nhathm.wellcare.ui.doctor.DoctorDetailFragment
+import com.nhathm.wellcare.ui.patient.PatientAppointmentFragment
 import com.nhathm.wellcare.ui.patient.PatientHomeFragment
 import com.nhathm.wellcare.ui.patient.PatientSettingFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -29,11 +30,13 @@ class PatientActivity : AppCompatActivity() {
 
         page.adds(
             PatientHomeFragment(),
+            PatientAppointmentFragment(),
             PatientSettingFragment(),
         )
 
+        binding.viewPager.offscreenPageLimit = 3
+
         binding.viewPager.adapter = page
-        binding.viewPager.offscreenPageLimit = 5
         binding.viewPager.setOnPageChangeListener(object : ViewPager.OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
@@ -53,7 +56,8 @@ class PatientActivity : AppCompatActivity() {
         binding.bottomNavigation.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_patient_home -> binding.viewPager.currentItem = 0
-                R.id.navigation_patient_setting -> binding.viewPager.currentItem = 1
+                R.id.navigation_patient_appointment -> binding.viewPager.currentItem = 1
+                R.id.navigation_patient_settings -> binding.viewPager.currentItem = 2
             }
             renderFragment()
             true

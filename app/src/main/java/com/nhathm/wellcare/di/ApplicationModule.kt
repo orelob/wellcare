@@ -30,7 +30,7 @@ class ApplicationModule {
 
 //        val BASE_URL = "http://10.225.89.241:8001/api/";
 //        val BASE_URL = "http://10.213.121.241:8001/api/";
-        val BASE_URL = "http://192.168.137.205:8001/api/";
+        val BASE_URL = "http://192.168.137.1:8001/api/";
 
     @Singleton
     @Provides

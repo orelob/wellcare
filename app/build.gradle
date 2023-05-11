@@ -113,6 +113,9 @@ dependencies {
     implementation 'com.github.getActivity:TitleBar:10.3'
     implementation 'com.github.GoodieBag:Pinview:v1.4'
 
+    implementation "com.github.gzu-liyujiang.AndroidPicker:Common:4.1.11"
+    implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.11")
+
 }
 
 // Allow references to generated code

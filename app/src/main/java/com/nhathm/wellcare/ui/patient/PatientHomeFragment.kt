@@ -1,5 +1,6 @@
 package com.nhathm.wellcare.ui.patient
 
+import android.content.Intent
 import android.os.Bundle
 import android.transition.AutoTransition
 import android.transition.TransitionManager
@@ -11,15 +12,20 @@ import androidx.fragment.app.viewModels
 import com.nhathm.wellcare.R as myR
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.nhathm.jobhunt.ui.jobs.DoctorAdapter
 import com.nhathm.jobhunt.ui.jobs.TopDoctorAdapter
 import com.nhathm.jobhunt.ui.jobs.UpcomingAppointmentAdapter
+import com.nhathm.wellcare.activity.DoctorDetailActivity
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.data.Appointment
 import com.nhathm.wellcare.data.Doctor
 import com.nhathm.wellcare.data.api.AppointmentApi
 import com.nhathm.wellcare.data.response.SignInResponse
 import com.nhathm.wellcare.databinding.FragmentPatientHomeBinding
+import com.nhathm.wellcare.ui.doctor.DoctorDetailFragment
+import com.nhathm.wellcare.ui.items.TopDoctorListClickListener
 import com.nhathm.wellcare.utils.castToList
 import com.nhathm.wellcare.utils.castToObject
 import com.nhathm.wellcare.utils.handleApiError
@@ -30,10 +36,13 @@ import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
-class PatientHomeFragment : Fragment() {
+class PatientHomeFragment : Fragment(), TopDoctorListClickListener {
 
     private lateinit var binding: FragmentPatientHomeBinding
     private val viewModel by viewModels<PatientViewModel>()
+
+    lateinit var listener: TopDoctorListClickListener
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -84,6 +93,9 @@ class PatientHomeFragment : Fragment() {
             }
         })
 
+        listener = this
+
+
         viewModel.topDoctorList.observe(viewLifecycleOwner, Observer { doctors ->
             binding.progressbar.visible(doctors is Resource.Loading)
             when (doctors) {
@@ -98,7 +110,7 @@ class PatientHomeFragment : Fragment() {
 //                        )
 
                         binding.topDoctors.adapter(
-                            DoctorAdapter(doctorsResponse as MutableList<Doctor>),
+                            TopDoctorAdapter(doctorsResponse as MutableList<Doctor>, listener),
                             false, false
                         )
                     }
@@ -109,6 +121,17 @@ class PatientHomeFragment : Fragment() {
                 else -> {}
             }
         })
+
+    }
+
+    override fun onDoctorListItemClick(view: View, doctor: Doctor) {
+
+        binding.root.context.startActivity(
+            Intent(
+                binding.root.context,
+                DoctorDetailActivity::class.java
+            )
+        )
     }
 
 }

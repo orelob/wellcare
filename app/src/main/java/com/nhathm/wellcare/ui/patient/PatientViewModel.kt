@@ -7,9 +7,12 @@ import com.nhathm.wellcare.base.BaseApiResponse
 import com.nhathm.wellcare.base.BaseViewModel
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.data.Appointment
+import com.nhathm.wellcare.data.Doctor
 import com.nhathm.wellcare.data.repository.AppointmentRepository
 import com.nhathm.wellcare.data.repository.DoctorRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,7 +31,6 @@ class PatientViewModel @Inject constructor(
         _upcomingAppointmentList.value = Resource.Loading
         _upcomingAppointmentList.value = appointmentRepository.getUpcomingAppointments()
     }
-
 
     private val _topDoctorList: MutableLiveData<Resource<BaseApiResponse>> =
         MutableLiveData()

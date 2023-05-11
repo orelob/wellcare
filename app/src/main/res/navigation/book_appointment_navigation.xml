@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_navigation"
+    app:startDestination="@id/patientBookAppointmentFragment">
+
+
+    <fragment
+        android:id="@+id/patientBookAppointmentFragment"
+        android:name="com.nhathm.wellcare.ui.patient.PatientBookAppointmentFragment"
+        android:label="PatientBookAppointmentFragment" >
+        <action
+            android:id="@+id/action_patientBookAppointmentFragment_to_doctorDetailFragment2"
+            app:destination="@id/doctorDetailFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/doctorDetailFragment2"
+        android:name="com.nhathm.wellcare.ui.doctor.DoctorDetailFragment"
+        android:label="DoctorDetailFragment" />
+
+
+</navigation>
