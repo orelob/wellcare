@@ -8,9 +8,8 @@ import com.google.android.material.behavior.HideBottomViewOnScrollBehavior
 import com.nhathm.wellcare.R
 import com.nhathm.wellcare.adapter.PageAdapter
 import com.nhathm.wellcare.databinding.ActivityPatientBinding
-import com.nhathm.wellcare.ui.doctor.DoctorDetailFragment
 import com.nhathm.wellcare.ui.patient.PatientAppointmentFragment
-import com.nhathm.wellcare.ui.patient.PatientHomeFragment
+import com.nhathm.wellcare.ui.patient.home.PatientHomeFragment
 import com.nhathm.wellcare.ui.patient.PatientSettingFragment
 import dagger.hilt.android.AndroidEntryPoint
 

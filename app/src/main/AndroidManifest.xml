@@ -39,10 +39,11 @@
         </activity>
         <activity android:name=".activity.OnBoardingActivity" />
 
-        <activity android:name=".activity.DoctorActivity" />
-        <activity android:name=".activity.DoctorDetailActivity" />
+        <activity android:name=".activity.DoctorActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".activity.SearchDoctorActivity" android:windowSoftInputMode="adjustResize"/>
+        <activity android:name=".activity.DoctorDetailActivity" android:windowSoftInputMode="adjustResize" />
 
-        <activity android:name=".activity.PatientActivity" />
+        <activity android:name=".activity.PatientActivity" android:windowSoftInputMode="adjustResize"/>
         <activity android:name=".activity.BookAppointmentActivity" android:windowSoftInputMode="adjustResize"/>
 
         <activity

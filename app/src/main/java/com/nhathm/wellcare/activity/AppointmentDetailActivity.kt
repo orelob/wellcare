@@ -8,6 +8,7 @@ import com.nhathm.jobhunt.ui.jobs.ReviewDoctorAdapter
 import com.nhathm.jobhunt.ui.jobs.TopDoctorAdapter
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.data.Doctor
+import com.nhathm.wellcare.databinding.ActivityAppointmentDetailBinding
 import com.nhathm.wellcare.databinding.ActivityDoctorDetailBinding
 import com.nhathm.wellcare.utils.handleApiError
 import com.nhathm.wellcare.utils.view.adapter
@@ -16,14 +17,14 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DoctorDetailActivity : AppCompatActivity() {
+class AppointmentDetailActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityDoctorDetailBinding
+    private lateinit var binding: ActivityAppointmentDetailBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityDoctorDetailBinding.inflate(layoutInflater)
+        binding = ActivityAppointmentDetailBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
 
@@ -32,15 +33,10 @@ class DoctorDetailActivity : AppCompatActivity() {
     }
 
     fun listener() {
-        binding.bookAppointmentButton.setOnClickListener {
-            startActivity(Intent(this, BookAppointmentActivity::class.java))
-        }
+
     }
 
     fun observe() {
-        val mockList: MutableList<String> = mutableListOf("Item 1", "Item 2", "Item 3")
-        binding.doctorReviews.adapter(
-            ReviewDoctorAdapter(mockList as MutableList<String>), 1
-        )
+
     }
 }

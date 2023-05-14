@@ -116,6 +116,11 @@ dependencies {
     implementation "com.github.gzu-liyujiang.AndroidPicker:Common:4.1.11"
     implementation("com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.11")
 
+    implementation 'com.ogaclejapan.smarttablayout:library:1.7.0@aar'
+    implementation 'com.ogaclejapan.smarttablayout:utils-v4:1.7.0@aar'
+
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+
 }
 
 // Allow references to generated code

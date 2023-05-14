@@ -11,11 +11,9 @@ interface SafeApiCall {
     ): Resource<T> {
         return withContext(Dispatchers.IO) {
             try {
-                Log.i("API Backend Service", "Success")
                 Resource.Success(apiCall.invoke())
             } catch (throwable: Throwable) {
                 throwable.printStackTrace()
-                Log.i("API Backend Service", "Error")
                 when (throwable) {
                     is HttpException -> {
                         Resource.Failure(false, throwable.code(), throwable.response()?.errorBody())

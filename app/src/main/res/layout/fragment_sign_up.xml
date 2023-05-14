@@ -19,7 +19,7 @@
         <ImageView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="30dp"
             android:layout_margin="@dimen/margin_18dp"
             android:src="@drawable/logo"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,6 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/margin_18dp"
+            android:layout_marginTop="30dp"
             android:text="Sign Up"
             android:textColor="@color/black"
             android:textSize="17sp"

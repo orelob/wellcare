@@ -63,8 +63,7 @@ class SignInFragment : BaseFragment() {
                 is Resource.Success -> {
                     lifecycleScope.launch {
 
-                        val signInResponse = castToObject(it.value, SignInResponse::class.java);
-
+                        val signInResponse = it.value
                         SharedPreferencesManager.setAuthToken(signInResponse.token)
                         SharedPreferencesManager.setRole(signInResponse.role)
 

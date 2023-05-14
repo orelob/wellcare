@@ -9,6 +9,7 @@ import com.nhathm.wellcare.AuthInterceptor
 import com.nhathm.wellcare.TokenService
 import com.nhathm.wellcare.data.Appointment
 import com.nhathm.wellcare.data.api.AppointmentApi
+import com.nhathm.wellcare.data.api.ArticleApi
 import com.nhathm.wellcare.data.api.AuthApi
 import com.nhathm.wellcare.data.api.DoctorApi
 import dagger.Module
@@ -73,4 +74,8 @@ class ApplicationModule {
     @Provides
     @Singleton
     fun provideDoctor(retrofit: Retrofit): DoctorApi = retrofit.create(DoctorApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideArticle(retrofit: Retrofit): ArticleApi = retrofit.create(ArticleApi::class.java)
 }

@@ -11,7 +11,6 @@ import androidx.navigation.findNavController
 import androidx.viewpager.widget.ViewPager
 import com.nhathm.wellcare.R
 import com.nhathm.wellcare.activity.AuthActivity
-import com.nhathm.wellcare.base.BaseApiResponse
 import com.nhathm.wellcare.base.BaseFragment
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.data.request.SignUpRequest
@@ -80,7 +79,7 @@ class SignUpFragment : BaseFragment() {
 
                         val response = it.value
 
-                        response.message?.let { it1 -> requireView().snackbar(it1) }
+                        response.let { it1 -> requireView().snackbar(it1) }
                     }
                 }
                 is Resource.Failure -> {

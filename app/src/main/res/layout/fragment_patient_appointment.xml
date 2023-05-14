@@ -46,6 +46,7 @@
             android:paddingTop="@dimen/margin_16dp"
             android:paddingBottom="@dimen/margin_16dp">
 
+
             <EditText
                 android:id="@+id/jobTitle"
                 android:layout_width="0dp"
@@ -54,7 +55,7 @@
                 android:background="@drawable/bg_input"
                 android:drawableStart="@drawable/ic_baseline_search_24"
                 android:drawablePadding="10dp"
-                android:hint="Search doctors by name"
+                android:hint="Search appointment"
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
                 android:paddingStart="12sp"
@@ -66,7 +67,6 @@
                 app:layout_constraintEnd_toStartOf="@id/filterButton"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <ImageButton
                 android:id="@+id/filterButton"
@@ -83,23 +83,41 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <com.google.android.material.tabs.TabLayout
+        <!--        <com.google.android.material.tabs.TabLayout-->
+        <!--            android:id="@+id/tab_layout"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@color/white"-->
+        <!--            android:minHeight="?attr/actionBarSize"-->
+        <!--            app:tabSelectedTextColor="@color/primary"-->
+        <!--            app:tabTextColor="@color/text"-->
+        <!--            />-->
+
+        <com.ogaclejapan.smarttablayout.SmartTabLayout
             android:id="@+id/tab_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            app:tabSelectedTextColor="@color/primary"
-            app:tabTextColor="@color/text" />
-
+            android:layout_height="40dp"
+            android:clipToPadding="false"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            app:stl_defaultTabTextColor="@color/primary"
+            app:stl_defaultTabTextHorizontalPadding="18dp"
+            app:stl_dividerColor="@color/yellow"
+            app:stl_dividerThickness="0dp"
+            app:stl_indicatorColor="@color/bg_primary"
+            app:stl_indicatorCornerRadius="18dp"
+            app:stl_indicatorInterpolation="smart"
+            app:stl_indicatorThickness="36dp"
+            app:stl_underlineThickness="0dp" />
     </com.google.android.material.appbar.AppBarLayout>
 
+    <!--    app:stl_indicatorGravity="center"-->
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/bg"
         android:layout_marginBottom="58dp"
+        android:background="@color/bg"
         android:fillViewport="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
         >

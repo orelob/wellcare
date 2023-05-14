@@ -14,7 +14,6 @@ import com.nhathm.jobhunt.ui.jobs.UpcomingAppointmentAdapter
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.data.Appointment
 import com.nhathm.wellcare.databinding.FragmentPatientUpcomingAppointmentListBinding
-import com.nhathm.wellcare.utils.castToList
 import com.nhathm.wellcare.utils.handleApiError
 import com.nhathm.wellcare.utils.view.adapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,14 +35,14 @@ class PatientUpcomingAppointmentFragment : Fragment() {
     ): View {
         binding = FragmentPatientUpcomingAppointmentListBinding.inflate(layoutInflater)
 
-        binding.calendar.minDate = System.currentTimeMillis()
-        binding.calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val calendar = Calendar.getInstance()
-            calendar.set(year, month, dayOfMonth)
-            val selectedDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
-
-            binding.textView.setText(selectedDate)
-        }
+//        binding.calendar.minDate = System.currentTimeMillis()
+//        binding.calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+//            val calendar = Calendar.getInstance()
+//            calendar.set(year, month, dayOfMonth)
+//            val selectedDate = SimpleDateFormat("dd/MM/yyyy").format(calendar.time)
+//
+//            binding.textView.setText(selectedDate)
+//        }
 
         binding.noResult.setOnClickListener { showDatePickerDialog() }
 
@@ -101,7 +100,7 @@ class PatientUpcomingAppointmentFragment : Fragment() {
         val selectedDate = months[selectedMonth] + " " + selectedDay + ", " + selectedYear
 
         // Update your UI or perform any required actions with the selected date
-        binding.textView.setText(selectedDate)
+//        binding.textView.setText(selectedDate)
     }
 
     fun observe() {
@@ -109,11 +108,9 @@ class PatientUpcomingAppointmentFragment : Fragment() {
             when (appointments) {
                 is Resource.Success -> {
                     lifecycleScope.launch {
-                        val appointmentsResponse =
-                            castToList(appointments.value, Appointment::class.java);
 
                         binding.upcomingAppointments.adapter(
-                            UpcomingAppointmentAdapter(appointmentsResponse as MutableList<Appointment>),
+                            UpcomingAppointmentAdapter(appointments.value as MutableList<Appointment>),
                             1
                         )
                     }

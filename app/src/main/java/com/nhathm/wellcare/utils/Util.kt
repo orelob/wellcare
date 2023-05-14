@@ -6,7 +6,6 @@ import android.content.ContextWrapper
 import android.content.Intent
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
@@ -17,7 +16,6 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.nhathm.wellcare.R
-import com.nhathm.wellcare.base.BaseApiResponse
 import com.nhathm.wellcare.base.Resource
 import com.nhathm.wellcare.ui.auth.SignInFragment
 
@@ -80,25 +78,7 @@ fun Fragment.handleApiError(
         else -> {
             val errorObj = failure.errorBody?.string().toString()
             Log.e("shi3k-error", errorObj)
-            Gson().fromJson(errorObj, BaseApiResponse::class.java).let {
-                it.message?.let { it1 -> requireView().snackbar(it1) }
-            }
+            requireView().snackbar(errorObj)
         }
-    }
-}
-
-fun <T> castToObject(str: BaseApiResponse, clazz: Class<T>): T {
-    return Gson().fromJson(str.data.toString(), clazz)
-}
-
-fun <T> castToList(str: BaseApiResponse, clazz: Class<T>): List<T> {
-    val gson = Gson()
-    val type = TypeToken.getParameterized(List::class.java, clazz).type
-    return gson.fromJson(str.data.toString(), type)
-}
-
-fun <T> LiveData<T>.asResource(): LiveData<Resource<T>> {
-    return Transformations.map(this) { data ->
-        Resource.Success(data)
     }
 }

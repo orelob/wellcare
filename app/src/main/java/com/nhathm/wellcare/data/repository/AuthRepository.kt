@@ -26,13 +26,17 @@ class AuthRepository @Inject constructor(
         authApi.signIn(SignInRequest(email, password))
     }
 
-    suspend fun changePassword(
-        currentPassword: String,
-        newPassword: String,
-        confirmPassword: String
-    ) = safeApiCall {
-        authApi.changePassword(ChangePasswordRequest(currentPassword, newPassword, confirmPassword))
+    suspend fun getCurrentUser() = safeApiCall {
+        authApi.getCurrentUser()
     }
+
+//    suspend fun changePassword(
+//        currentPassword: String,
+//        newPassword: String,
+//        confirmPassword: String
+//    ) = safeApiCall {
+//        authApi.changePassword(ChangePasswordRequest(currentPassword, newPassword, confirmPassword))
+//    }
 
     suspend fun saveAccessToken(accessToken: String) {
         localDataStore.saveAccessToken(accessToken)

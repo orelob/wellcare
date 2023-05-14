@@ -33,19 +33,6 @@ class DoctorHomeFragment : Fragment() {
 
         requireActivity().actionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.expandableLayout.visible(false)
-        binding.filterButton.setOnClickListener {
-            if (binding.expandableLayout.visibility == View.GONE) {
-                TransitionManager.beginDelayedTransition(binding.cardView, AutoTransition())
-                binding.expandableLayout.visible(true)
-                binding.filterButton.setImageResource(myR.drawable.ic_baseline_filter_list_active_24)
-            } else {
-                TransitionManager.beginDelayedTransition(binding.cardView, AutoTransition())
-                binding.expandableLayout.visible(false)
-                binding.filterButton.setImageResource(myR.drawable.ic_baseline_filter_list_24)
-            }
-        }
-
         return binding.root
     }
 
